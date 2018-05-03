@@ -32,7 +32,8 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
-        init();
+        Data.getProductsData(this);
+        adapter.notifyDataSetChanged();
     }
 
     private void init() {
@@ -42,20 +43,17 @@ public class MainActivity extends AppCompatActivity {
         actionButton = findViewById(R.id.fab);
 
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-
-        if (adapter != null)
-            adapter.notifyDataSetChanged();
-        else {
-            adapter = new InventoryAdapter(this, list);
-            recyclerView.setAdapter(adapter);
-        }
+        adapter = new InventoryAdapter(this, list);
+        recyclerView.setAdapter(adapter);
+        adapter.notifyDataSetChanged();
 
         actionButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 //                Intent intent = new Intent(MainActivity.this, DetailsActivity.class);
 //                startActivity(intent);
-                Data.insertData("Troy16", "16", 2);
+                Data.insertData("Troy", "16", 2);
+                Data.getProductsData(getApplicationContext());
                 adapter.notifyDataSetChanged();
             }
         });
