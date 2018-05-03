@@ -36,7 +36,7 @@ public class InventoryAdapter extends RecyclerView.Adapter<InventoryAdapter.Inve
 
         holder.productName.setText(product.getName());
         holder.productPrice.setText(product.getPrice());
-        holder.productQuantity.setText(product.getQuantity());
+        holder.productQuantity.setText(String.valueOf(product.getQuantity()));
     }
 
     @Override

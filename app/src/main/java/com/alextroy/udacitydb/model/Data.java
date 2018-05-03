@@ -5,6 +5,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
+import com.alextroy.udacitydb.adapter.InventoryAdapter;
 import com.alextroy.udacitydb.db.InventoryContract;
 import com.alextroy.udacitydb.db.InventoryDbHelper;
 
@@ -59,7 +60,7 @@ public class Data {
             while (cursor.moveToNext()) {
                 int currentId = cursor.getInt(idColumnIndex);
                 String currentName = cursor.getString(nameColumnIndex);
-                int currentPrice = cursor.getInt(priceColumnIndex);
+                String currentPrice = cursor.getString(priceColumnIndex);
                 int currentQuantity = cursor.getInt(quantityColumnIndex);
                 products.add(new Product(currentId, currentName, currentPrice, currentQuantity));
             }
